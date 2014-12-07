@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ClownFish.ServiceReference1 {
+namespace ClownFishClient.ServiceReference1 {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IChessGameService", CallbackContract=typeof(ClownFish.ServiceReference1.IChessGameServiceCallback))]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IChessGameService", CallbackContract=typeof(ClownFishClient.ServiceReference1.IChessGameServiceCallback))]
     public interface IChessGameService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessGameService/GetGames", ReplyAction="http://tempuri.org/IChessGameService/GetGamesResponse")]
@@ -49,17 +49,20 @@ namespace ClownFish.ServiceReference1 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IChessGameServiceCallback {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessGameService/Ping", ReplyAction="http://tempuri.org/IChessGameService/PingResponse")]
+        void Ping();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChessGameService/GameStateChanged", ReplyAction="http://tempuri.org/IChessGameService/GameStateChangedResponse")]
         void GameStateChanged(GameServerInterfaces.GameMoveDTO latestMove, GameServerInterfaces.ChessGameDTO gameState);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IChessGameServiceChannel : ClownFish.ServiceReference1.IChessGameService, System.ServiceModel.IClientChannel {
+    public interface IChessGameServiceChannel : ClownFishClient.ServiceReference1.IChessGameService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ChessGameServiceClient : System.ServiceModel.DuplexClientBase<ClownFish.ServiceReference1.IChessGameService>, ClownFish.ServiceReference1.IChessGameService {
+    public partial class ChessGameServiceClient : System.ServiceModel.DuplexClientBase<ClownFishClient.ServiceReference1.IChessGameService>, ClownFishClient.ServiceReference1.IChessGameService {
         
         public ChessGameServiceClient(System.ServiceModel.InstanceContext callbackInstance) : 
                 base(callbackInstance) {

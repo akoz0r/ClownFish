@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="GameService\ChessGameService.cs" />
     <Compile Include="GameService\Game.cs" />
-    <Compile Include="GameService\MoveChecker.cs" />
+    <Compile Include="GameService\ChessEngine.cs" />
     <Compile Include="GameService\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

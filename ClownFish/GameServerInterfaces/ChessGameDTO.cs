@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 using GameServerInterfaces.Enums;
 
@@ -28,5 +29,8 @@ namespace GameServerInterfaces
 
         [DataMember]
         public GameState GameState { get; set; }
+
+        [DataMember]
+        public List<ChessPieceDTO> ChessPieces { get; set; } 
     }
 }

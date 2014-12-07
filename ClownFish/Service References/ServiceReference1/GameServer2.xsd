@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/GameServerInterfaces.Enums" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/GameServerInterfaces.Enums" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="ColorEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="White" />
+      <xs:enumeration value="Black" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ColorEnum" nillable="true" type="tns:ColorEnum" />
+  <xs:simpleType name="PieceTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Pawn" />
+      <xs:enumeration value="Bishop" />
+      <xs:enumeration value="Knight" />
+      <xs:enumeration value="Rook" />
+      <xs:enumeration value="Queen" />
+      <xs:enumeration value="King" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PieceTypeEnum" nillable="true" type="tns:PieceTypeEnum" />
   <xs:simpleType name="GameState">
     <xs:restriction base="xs:string">
       <xs:enumeration value="WaitingForPlayer" />
@@ -8,11 +26,4 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="GameState" nillable="true" type="tns:GameState" />
-  <xs:simpleType name="ColorEnum">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="White" />
-      <xs:enumeration value="Black" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="ColorEnum" nillable="true" type="tns:ColorEnum" />
 </xs:schema>

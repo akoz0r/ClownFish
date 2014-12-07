@@ -1,10 +1,15 @@
-﻿using ClownFish.ServiceReference1;
+﻿using ClownFishClient.ServiceReference1;
 using GameServerInterfaces;
 
-namespace ClownFish
+namespace ClownFishClient
 {
-    class ClientCallbackHandler : IChessGameServiceCallback
+    public class ClientCallbackHandler : IChessGameServiceCallback
     {
+        public void Ping()
+        {
+            
+        }
+
         public void GameStateChanged(GameMoveDTO latestMove, ChessGameDTO gameState)
         {
             //todo

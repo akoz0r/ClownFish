@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClownFish", "ClownFish.csproj", "{A56C80D6-34DE-4ED5-8B2B-3FBC04C747EA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClownFishClient", "ClownFishClient.csproj", "{A56C80D6-34DE-4ED5-8B2B-3FBC04C747EA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameServer", "..\GameServer\GameServer.csproj", "{A673F884-07BF-4053-8F7F-32361975F9B5}"
 EndProject

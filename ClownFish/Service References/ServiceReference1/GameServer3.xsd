@@ -12,6 +12,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="BlackPlayer" nillable="true" type="tns:PlayerDTO" />
       <xs:element minOccurs="0" name="BlackTimeLeft" type="ser:duration" />
+      <xs:element minOccurs="0" name="ChessPieces" nillable="true" type="tns:ArrayOfChessPieceDTO" />
       <xs:element minOccurs="0" name="CurrentMoveCount" type="xs:int" />
       <xs:element minOccurs="0" name="ExtraTimePerMove" type="ser:duration" />
       <xs:element minOccurs="0" name="GameID" nillable="true" type="xs:string" />
@@ -27,13 +28,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="PlayerDTO" nillable="true" type="tns:PlayerDTO" />
-  <xs:complexType name="GameMoveDTO">
+  <xs:complexType name="ArrayOfChessPieceDTO">
     <xs:sequence>
-      <xs:element minOccurs="0" name="From" nillable="true" type="tns:BoardPosition" />
-      <xs:element minOccurs="0" name="To" nillable="true" type="tns:BoardPosition" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ChessPieceDTO" nillable="true" type="tns:ChessPieceDTO" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="GameMoveDTO" nillable="true" type="tns:GameMoveDTO" />
+  <xs:element name="ArrayOfChessPieceDTO" nillable="true" type="tns:ArrayOfChessPieceDTO" />
+  <xs:complexType name="ChessPieceDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BoardPosition" nillable="true" type="tns:BoardPosition" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/GameServerInterfaces.Enums" minOccurs="0" name="PieceColorEnum" type="q2:ColorEnum" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/GameServerInterfaces.Enums" minOccurs="0" name="TypeEnum" type="q3:PieceTypeEnum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ChessPieceDTO" nillable="true" type="tns:ChessPieceDTO" />
   <xs:complexType name="BoardPosition">
     <xs:sequence>
       <xs:element minOccurs="0" name="X" type="xs:unsignedInt" />
@@ -41,4 +49,11 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="BoardPosition" nillable="true" type="tns:BoardPosition" />
+  <xs:complexType name="GameMoveDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="From" nillable="true" type="tns:BoardPosition" />
+      <xs:element minOccurs="0" name="To" nillable="true" type="tns:BoardPosition" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GameMoveDTO" nillable="true" type="tns:GameMoveDTO" />
 </xs:schema>

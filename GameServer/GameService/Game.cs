@@ -12,6 +12,7 @@ namespace GameServer.GameService
             Listeners = new List<IClientCallbackInterface>();
 
             Moves = new List<GameMoveDTO>();
+            Pieces = ChessEngine.GetStartingPositions(); 
 
             GameID = Guid.NewGuid().ToString();
 
@@ -33,6 +34,8 @@ namespace GameServer.GameService
         public List<IClientCallbackInterface> Listeners { get; set; }
 
         public List<GameMoveDTO> Moves { get; set; }
+
+        public List<ChessPieceDTO> Pieces { get; set; } 
 
         public string GameID { get; set; }
 
@@ -59,7 +62,8 @@ namespace GameServer.GameService
                 CurrentMoveCount = CurrentMoveCount,
                 ExtraTimePerMove = ExtraTimePerMove,
                 GameID = GameID,
-                GameState = GameState
+                GameState = GameState,
+                ChessPieces = Pieces
             };
         }
 
