@@ -17,6 +17,38 @@ namespace GameServer.GameService
         public ChessGameService()
         {
             CurrentGames = new List<Game>();
+            Task.Run(() => KeepConnectionsAliveLoop());
+        }
+
+        private void KeepConnectionsAliveLoop()
+        {
+            while (true)
+            {
+                Task.Delay(30 * 1000);
+                foreach (var client in CurrentGames.SelectMany(g => g.Listeners))
+                {
+                    try
+                    {
+                        client.Ping();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        try
+                        {
+                            var games = CurrentGames.Where(g => g.Listeners.Any(l => l == client));
+                            foreach (var game in games)
+                            {
+                                game.Listeners.Remove(client);
+                            }
+                        }
+                        catch (Exception ex2)
+                        {
+                            Console.WriteLine(ex2.Message);
+                        }
+                    }
+                }
+            }
         }
 
         public List<ChessGameDTO> GetGames()
@@ -69,7 +101,7 @@ namespace GameServer.GameService
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine(ex.Message);
+                    Console.WriteLine(ex.Message);
                     return false;
                 }
             }
@@ -88,6 +120,7 @@ namespace GameServer.GameService
                     }
                     catch (Exception ex)
                     {
+                        game.Listeners.Remove(client);
                         Debug.WriteLine(ex.Message);
                     }
                 }
