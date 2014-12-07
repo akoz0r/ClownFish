@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.ServiceModel;
+using System.Threading;
+using System.Threading.Tasks;
 using GameServerInterfaces;
 using GameServerInterfaces.Enums;
 
 namespace GameServer.GameService
 {
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class ChessGameService : IChessGameService
     {
         private List<Game> CurrentGames { get; set; }
@@ -76,17 +79,21 @@ namespace GameServer.GameService
 
         private void SendUpdates(Game game)
         {
-            foreach (var client in game.Listeners)
+            Task.Run(() =>
             {
-                try
+                foreach (var client in game.Listeners)
                 {
-                    client.GameStateChanged(game.Moves.LastOrDefault(), game.MapToDTO());
+                    try
+                    {
+                        client.GameStateChanged(game.Moves.LastOrDefault(), game.MapToDTO());
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine(ex.Message);
+                    }
                 }
-                catch(Exception ex)
-                {
-                    Debug.WriteLine(ex.Message);
-                }
-            }
+
+            });
         }
     }
 }
